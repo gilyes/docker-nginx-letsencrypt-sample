@@ -143,7 +143,7 @@ services:
   sample-api:
     restart: always
     image: sample-api
-    build: ./sample-containers/api
+    build: ./samples/api
     container_name: sample-api
     environment:
       - VIRTUAL_HOST=sampleapi.example.com
@@ -155,7 +155,7 @@ services:
   sample-website:
     restart: always
     image: sample-website
-    build: ./sample-containers/website
+    build: ./samples/website
     container_name: sample-website
     volumes:
       - "./volumes/nginx-sample-website/conf.d/:/etc/nginx/conf.d"
@@ -169,7 +169,7 @@ services:
 ```
 The important part here are the environment variables. These are used by the config generator and certificate maintainer containers to set up the system.
 
-The source code for these two images is in the `sample-containers` subfolder, the images are built from there. In a real-world scenario these images would likely come from a Docker registry.
+The source code for these two images is in the `samples` subfolder, the images are built from there. In a real-world scenario these images would likely come from a Docker registry.
 
 ## Conclusion
 This can be a fairly simple way to have easy, reproducible deploys for websites with free, auto-renewing TLS certificates. 
