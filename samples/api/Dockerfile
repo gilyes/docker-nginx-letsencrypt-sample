@@ -13,7 +13,7 @@ USER app
 WORKDIR $HOME/src
 
 RUN npm install && \
-    npm cache clean
+    npm cache clean --force
 
 USER root
 COPY . $HOME/src
