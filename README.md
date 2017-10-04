@@ -1,6 +1,6 @@
-# Docker + Nginx + Let's Encrypt 
+# Docker + Nginx + Let's Encrypt + Odoo
 
-This simple example shows how to set up multiple websites running behind a dockerized Nginx reverse proxy and served via HTTPS using free [Let's Encrypt](https://letsencrypt.org) certificates. New sites can be added on the fly by just modifying `docker-compose.yml` and then running `docker-compose up` as the main Nginx config is automatically updated and certificates (if needed) are automatically acquired.
+This simple example shows how to set up an Odoo instance running behind a dockerized Nginx reverse proxy and served via HTTPS using free [Let's Encrypt](https://letsencrypt.org) certificates. New sites can be added on the fly by just modifying `docker-compose.yml` and then running `docker-compose up` as the main Nginx config is automatically updated and certificates (if needed) are automatically acquired.
 
 Some of the configuration is derived from <https://github.com/fatk/docker-letsencrypt-nginx-proxy-companion-examples> with some simplifications and updates to work with current `nginx.tmpl` from [nginx-proxy](https://github.com/jwilder/nginx-proxy) and docker-compose v2 files.
 
@@ -11,11 +11,10 @@ Some of the configuration is derived from <https://github.com/fatk/docker-letsen
 * access to (sub)domain(s) pointing to a publicly accessible server (required for TLS)
 
 ### Preparation
-* Clone the [repository](https://github.com/gilyes/docker-nginx-letsencrypt-sample) on the server pointed to by your domain. 
+* Clone the [repository](https://github.com/verisage/docker-nginx-letsencrypt-sample) on the server pointed to by your domain. 
 * In `docker-compose.yml`: 
   * Change the **VIRTUAL_HOST** and **LETSENCRYPT_HOST** entries from *sampleapi.example.com* and *samplewebsite.example.com* to your domains.
   * Change **LETSENCRYPT_EMAIL** entries to the email address you want to be associated with the certificates. 
-* In `volumes/config/sample-website/config.js` change **apiUrl** to your API endpoint as set up in the previous point in `docker-compose.yml`.
 
 ### Running
 In the main directory run: 
