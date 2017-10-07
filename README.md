@@ -11,7 +11,7 @@ Some of the configuration is derived from <https://github.com/fatk/docker-letsen
 * access to (sub)domain(s) pointing to a publicly accessible server (required for TLS)
 
 ### Preparation
-* Clone the [repository](https://github.com/verisage/docker-nginx-letsencrypt-sample) on the server pointed to by your domain. 
+* Clone the [repository](https://github.com/verisage/docker-nginx-letsencrypt-odoo) on the server pointed to by your domain. 
 * In `docker-compose.yml`: 
   * Change the **VIRTUAL_HOST** and **LETSENCRYPT_HOST** entries from *sampleapi.example.com* and *samplewebsite.example.com* to your domains.
   * Change **LETSENCRYPT_EMAIL** entries to the email address you want to be associated with the certificates. 
@@ -24,9 +24,8 @@ docker-compose up
 
 This will perform the following steps:
 
-* Download the required images from Docker Hub ([nginx](https://hub.docker.com/_/nginx/), [docker-gen](https://hub.docker.com/r/jwilder/docker-gen/), [docker-letsencrypt-nginx-proxy-companion](https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/)).
+* Download the required images from Docker Hub ([nginx](https://hub.docker.com/_/nginx/), [docker-gen](https://hub.docker.com/r/jwilder/docker-gen/), [docker-letsencrypt-nginx-proxy-companion](https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/)), and [odoo](https://hub.docker.com/_/odoo/)).
 * Create containers from them.
-* Build and create containers for the two sites located in `sample-websites`.
 * Start up the containers. 
   * *docker-letsencrypt-nginx-proxy-companion* inspects containers' metadata and tries to acquire certificates as needed (if successful then saving them in a volume shared with the host and the Nginx container).
   * *docker-gen* also inspects containers' metadata and generates the configuration file for the main Nginx reverse proxy
