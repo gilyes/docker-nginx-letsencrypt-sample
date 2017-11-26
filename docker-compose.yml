@@ -39,7 +39,7 @@ services:
 
   web:
     restart: always
-    image: odoo:9
+    image: odoo:11
     container_name: odoo
     depends_on:
       - db
