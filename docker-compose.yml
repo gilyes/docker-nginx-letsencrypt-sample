@@ -50,17 +50,17 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
     environment:
-      - VIRTUAL_HOST=www.agileerp.us
+      - VIRTUAL_HOST=samplewebsite.example.com
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=8069
-      - LETSENCRYPT_HOST=www.agileerp.us
-      - LETSENCRYPT_EMAIL=guy@verisage.us
+      - LETSENCRYPT_HOST=samplewebsite.example.com
+      - LETSENCRYPT_EMAIL=test@example.com
   db:
     restart: always
     image: postgres:9.6
     environment:
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=sample_password
+      - POSTGRES_USER=sample_user
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
