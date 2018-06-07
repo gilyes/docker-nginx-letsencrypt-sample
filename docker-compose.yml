@@ -50,9 +50,9 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
     environment:
-      - VIRTUAL_HOST=samplewebsite.example.com
+      - VIRTUAL_HOST=odoo, odoochat
       - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=8069
+      - VIRTUAL_PORT=8069, 8072
       - LETSENCRYPT_HOST=samplewebsite.example.com
       - LETSENCRYPT_EMAIL=test@example.com
   db:
