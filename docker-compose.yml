@@ -37,29 +37,29 @@ services:
     environment:
       - NGINX_DOCKER_GEN_CONTAINER=nginx-gen
 
-  sample-api:
+  zerotrust-api:
     restart: always
-    image: sample-api
+    image: zerotrust-api
     build: ./samples/api
-    container_name: sample-api
+    container_name: zerotrust-api
     environment:
-      - VIRTUAL_HOST=sampleapi.example.com
+      - VIRTUAL_HOST=api.zerotrust.art
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=sampleapi.example.com
-      - LETSENCRYPT_EMAIL=email@example.com
+      - LETSENCRYPT_HOST=api.zerotrust.art
+      - LETSENCRYPT_EMAIL=zero@zerotrust.art
 
-  sample-website:
+  zerotrust-website:
     restart: always
-    image: sample-website
+    image: zerotrust-website
     build: ./samples/website
-    container_name: sample-website
+    container_name: zerotrust-website
     volumes:
-      - "./volumes/nginx-sample-website/conf.d/:/etc/nginx/conf.d"
-      - "./volumes/config/sample-website/config.js:/usr/share/nginx/html/config.js"
+      - "./volumes/nginx-zerotrust-website/conf.d/:/etc/nginx/conf.d"
+      - "./volumes/config/zerotrust-website/config.js:/usr/share/nginx/html/config.js"
     environment:
-      - VIRTUAL_HOST=samplewebsite.example.com
+      - VIRTUAL_HOST=zerotrust.art
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=sample.example.com
-      - LETSENCRYPT_EMAIL=email@example.com
+      - LETSENCRYPT_HOST=zerotrust.art
+      - LETSENCRYPT_EMAIL=zero@zerotrust.art
