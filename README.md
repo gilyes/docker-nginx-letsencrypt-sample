@@ -134,7 +134,7 @@ The container uses a volume shared with the host and the Nginx container to main
 It also mounts the Docker socket in order to inspect the other containers. See the security warning above in the docker-gen section about the risks of that.
 
 ### The sample website and the sample API 
-These two very simple samples are running in their own respective containers. They are defined in `docker-compose.yml` under the **sample-api** and **sample-website** service blocks: 
+These two very simple services are running in their own respective containers. They are defined in `docker-compose.yml` under the **sample-api** and **sample-website** service blocks: 
 
 ```
 services:
@@ -143,7 +143,7 @@ services:
   sample-api:
     restart: always
     image: sample-api
-    build: ./samples/api
+    build: ./services/api
     container_name: sample-api
     environment:
       - VIRTUAL_HOST=sampleapi.example.com
@@ -155,7 +155,7 @@ services:
   sample-website:
     restart: always
     image: sample-website
-    build: ./samples/website
+    build: ./services/website
     container_name: sample-website
     volumes:
       - "./volumes/nginx-sample-website/conf.d/:/etc/nginx/conf.d"
@@ -169,7 +169,7 @@ services:
 ```
 The important part here are the environment variables. These are used by the config generator and certificate maintainer containers to set up the system.
 
-The source code for these two images is in the `samples` subfolder, the images are built from there. In a real-world scenario these images would likely come from a Docker registry.
+The source code for these two images is in the `services` subfolder, the images are built from there. In a real-world scenario these images would likely come from a Docker registry.
 
 ## Conclusion
 This can be a fairly simple way to have easy, reproducible deploys for websites with free, auto-renewing TLS certificates. 

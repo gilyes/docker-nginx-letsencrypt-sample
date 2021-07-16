@@ -40,7 +40,7 @@ services:
   zerotrust-api:
     restart: always
     image: zerotrust-api
-    build: ./samples/api
+    build: ./services/api
     container_name: zerotrust-api
     environment:
       - VIRTUAL_HOST=api.zerotrust.art
@@ -52,7 +52,7 @@ services:
   zerotrust-website:
     restart: always
     image: zerotrust-website
-    build: ./samples/website
+    build: ./services/website
     container_name: zerotrust-website
     volumes:
       - "./volumes/nginx-zerotrust-website/conf.d/:/etc/nginx/conf.d"
